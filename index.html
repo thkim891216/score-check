@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>점수 조회 사이트</title>
+</head>
+<body>
+  <h2>점수 조회</h2>
+  <input type="text" id="studentId" placeholder="학번">
+  <input type="text" id="studentName" placeholder="이름">
+  <button onclick="findScore()">조회</button>
+  <div id="result" style="margin-top:20px;"></div>
+
+  <script>
+    // 예시 데이터 (실제 데이터로 교체 가능)
+    const students = [
+      { id: '20241234', name: '김철수', score: 98 },
+      { id: '20241235', name: '이영희', score: 77 },
+      // ... 추가
+    ];
+
+    function findScore() {
+      const id = document.getElementById('studentId').value.trim();
+      const name = document.getElementById('studentName').value.trim();
+      const student = students.find(s => s.id === id && s.name === name);
+      const resultDiv = document.getElementById('result');
+      if (student) {
+        resultDiv.textContent = `${student.name}님(학번: ${student.id})의 점수는 ${student.score}점 입니다.`;
+      } else {
+        resultDiv.textContent = '해당하는 정보가 없습니다.';
+      }
+    }
+  </script>
+</body>
+</html>
